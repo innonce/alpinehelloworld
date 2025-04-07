@@ -1,6 +1,11 @@
 #Grab the latest alpine image
 FROM alpine:latest
 
+# Install python, pip, bash, and build dependencies
+RUN apk add --no-cache --update \
+    python3 py3-pip bash \
+    gcc musl-dev linux-headers libffi-dev openssl-dev
+    
 # Install python and pip
 RUN apk add --no-cache --update python3 py3-pip bash
 ADD ./webapp/requirements.txt /tmp/requirements.txt
